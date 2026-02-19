@@ -168,7 +168,27 @@ services:
     user: "0:0"
     volumes:
       - .:/sources
-  
+
+  search-api:
+    build: 
+      context: .
+      dockerfile: search_api/Dockerfile
+    container_name: search-api
+    environment:
+      APP_DB_DSN: postgresql://app:app@app-db:5432/app
+      QDRANT_URL: http://51.250.71.134:6333
+      QDRANT_TEXT_COLLECTION: ads_text
+      MODEL_NAME: openai/clip-vit-base-patch32
+      PYTHONPATH: /opt/airflow
+    depends_on:
+      app-db:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    ports:
+      - "7777:7777"
+    command: bash -lc "uvicorn search_api.main:app --host 0.0.0.0 --port 7777"
+    
 volumes:
   airflow_db_data:
   app_db_data:

@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+
+qdrant-client
+SQLAlchemy
+psycopg2-binary
+
+transformers
+torch
+Pillow
