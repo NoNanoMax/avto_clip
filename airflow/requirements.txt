@@ -1,0 +1,7 @@
+requests
+qdrant-client
+
+transformers
+torch
+Pillow
+tqdm
