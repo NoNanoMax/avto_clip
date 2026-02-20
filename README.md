@@ -27,6 +27,7 @@ sudo docker compose up --build -d
 Check:
 
 ✅ http://\<ip\>:8080/home - airflow server (login: arflow, password: airflow)
+![alt text](docs/dag.png)
 ✅ http://\<ip\>/dashboard - qdrant dashboard. After first airflow run you can see the first collected data: ![alt text](docs/cars.png)
 ✅ app db - data base with meta information:
 ```
