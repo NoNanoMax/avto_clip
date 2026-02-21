@@ -26,20 +26,23 @@ sudo docker compose up --build -d
 
 Check:
 
-✅ http://\<ip\>:8080/home - airflow server (login: arflow, password: airflow)
+✅ ```http://\<ip\>:8080/home``` - airflow server (login: arflow, password: airflow)
+
 ![alt text](docs/dag.png)
-✅ http://\<ip\>/dashboard - qdrant dashboard. After first airflow run you can see the first collected data: ![alt text](docs/cars.png)
-✅ app db - data base with meta information:
+✅ ```http://\<ip\:6333>/dashboard``` - qdrant dashboard. After first airflow run you can see the first collected data: 
+
+![alt text](docs/cars.png)
+✅ 5542 app db - data base with meta information:
 ```
 sudo docker exec -it app-db -psql -U app
 ...
 SELECT * FROM photos;
 SELECT * FROM ads;
 ```
-✅ api - http://\<ip\>:7777/docs
+✅ ```http://\<ip\>:7777/docs``` - search API
 
 ----
-#### API
+#### Search API
 
 - /search - find top limit cars photos of which are similar to the description
 ```

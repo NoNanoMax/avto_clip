@@ -35,7 +35,7 @@ _LOG.addHandler(logging.StreamHandler())
 @dag(
     dag_id="parse_ads_photos_text_embeddings",
     start_date=datetime(2026, 1, 1),
-    schedule="*/30 * * * *",
+    schedule="*/5 * * * *",
     catchup=False,
     max_active_runs=10,
 )
@@ -60,7 +60,7 @@ def pipeline_dag():
     @task
     def get_ids() -> list[str]:
         api = AdsApiClient(ADS_API_BASE_URL)
-        res = api.list_ad_ids(query=NEW_LINK)[:5]
+        res = api.list_ad_ids(query=NEW_LINK)[:50]
         print(res)
         return res
 
