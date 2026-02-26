@@ -52,9 +52,6 @@ def upsert_photo(hook: PostgresHook, photo_id: str, ad_id: str, source_url: str)
         ON CONFLICT (id) DO UPDATE SET
           ad_id = EXCLUDED.ad_id,
           source_url = EXCLUDED.source_url;
-
-
-        CREATE CLUSTERED INDEX IX_ID ON photos(ad_id);
         """,
         parameters=(photo_id, ad_id, source_url),
     )
